@@ -1,0 +1,40 @@
+<div class="wrapper-main">
+  <app-navigation-bar currentLocation="adopt-dragon"></app-navigation-bar>
+
+  <div class="wrapper-content">
+
+    <div>
+      <div class="title">{{ 'dragon.adoptDragonTilte' | translate }}</div>
+      <div class="title-secondary">{{ 'dragon.adoptDragonHint' | translate }}</div>
+    </div>
+
+    <div *ngFor="let stage of adoptStages">
+      <div *ngIf="stage.step === currentStep" class="wrapper-stage">
+        <div class="question">{{ stage.question | translate }}</div>
+        <div class="answers-wrapper">
+          <div *ngFor="let answer of stage.answers" class="answer">
+            <div (click)="saveAnswer(answer)">
+              {{ answer.label | translate }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="currentStep === adoptStep.Name" class="wrapper-form">
+      <form [formGroup]="form" (ngSubmit)="adoptDragon()">
+        <div class="question">{{ 'dragon.chooseDragonName' | translate }}</div>
+        <app-input-base *ngFor="let field of fields" [options]="field"></app-input-base>
+
+        <button *ngIf="!submitLoading" [disabled]="!form.valid" class="btn-base">
+          {{ 'dragon.adopt' | translate }}
+        </button>
+        <div *ngIf="submitLoading" class="spinner">
+          <app-loading-indicator></app-loading-indicator>
+        </div>
+      </form>
+    </div>
+
+
+  </div>
+</div>

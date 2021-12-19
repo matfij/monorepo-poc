@@ -1,1 +1,126 @@
-/* You can add global styles to this file, and also import other style files */
+@import '~ngx-toastr/toastr';
+// @import '~bootstrap/scss/bootstrap';
+
+@import 'app/core/theme/mixins.scss';
+@import 'app/core/theme/variables.scss';
+
+html, body {
+  height: 100%;
+  margin: 0px;
+
+  padding: 0px;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+*:focus {
+  outline: none;
+  border: none;
+}
+
+/**
+ * Scrollbar
+ */
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: lighten($color: $app-dark, $amount: 10) $app-primary;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: $app-dark;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: $app-primary;
+  border-radius: 20px;
+  border: 2px solid lighten($color: $app-dark, $amount: 10);
+}
+
+/**
+ * Wrappers
+ */
+
+.wrapper-main {
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  text-align: center;
+  overflow: hidden;
+  color: $app-light;
+  background: $app-dark;
+}
+
+.wrapper-content {
+  width: 95%;
+  max-width: 1200px;
+  min-height: 70vh;
+  max-height: 90vh;
+  margin: auto;
+
+  padding-top: 10px;
+  padding: 20px auto;
+  display: block;
+  color: $app-light;
+  background: lighten($color: $app-dark, $amount: 10);
+  border-radius: 4px;
+  overflow-y: visible;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+}
+
+@media all and (max-width: $mobile-threshold) {
+  .wrapper-content {
+    height: 100%;
+    max-height: 100%;
+    width: 100%;
+
+    padding: 25px 5px;
+  }
+}
+
+/**
+ * Text
+ */
+
+.title {
+  color: $app-light;
+  font-size: 32px;
+  letter-spacing: 0.5px;
+}
+
+.title-secondary {
+  color: $app-light;
+  font-size: 24px;
+  letter-spacing: 0.25px;
+}
+
+/**
+ * Buttons
+ */
+
+.btn-base {
+  @include button();
+}
+
+/**
+ * Toasts
+ */
+
+#toast-container > .toast-success {
+  background-image: none;
+  background-color: $app-green;
+  color: $app-dark;
+}
+
+#toast-container > .toast-error {
+  background-image: none;
+  background-color: $app-red;
+  color: $app-dark;
+}

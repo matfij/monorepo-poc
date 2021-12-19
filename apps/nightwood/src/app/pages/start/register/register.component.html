@@ -1,0 +1,21 @@
+<div class="wrapper-main">
+  <div class="wrapper-content">
+
+    <div class="title title-main">{{ 'common.appName' | translate }}</div>
+    <div class="title title-small">{{ 'start.registerHint' | translate }}</div>
+
+    <div class="wrapper-form">
+      <form [formGroup]="form" (ngSubmit)="register()">
+        <app-input-base *ngFor="let field of fields" [options]="field"></app-input-base>
+
+        <button [disabled]="!form.valid" class="btn-base">
+          {{ 'start.register' | translate }}
+        </button>
+      </form>
+    </div>
+
+    <button routerLink="../login" class="btn-base">
+      {{ 'common.back' | translate }}
+    </button>
+  </div>
+</div>

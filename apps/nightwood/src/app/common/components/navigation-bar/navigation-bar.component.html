@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
+
+  <div class="navbar-brand">
+    <a href="game/home">
+      <img src="/assets/img/brand.png" width="30" height="30" class="d-inline-block align-top" alt="">
+    </a>
+    {{ user?.nickname ?? '' }}
+  </div>
+
+  <button class="navbar-toggler btn btn-outline" type="button" (click)="isCollapsed = !isCollapsed">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- <div class="collapse navbar-collapse" [ngbCollapse]="isCollapsed"> -->
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li *ngFor="let item of navigationItems" [ngClass]="{'app-active': item.isActive}" class="nav-item">
+        <div class="nav-link app-nav-link" (click)="navigate(item.path)">{{ item.label | translate }}</div>
+      </li>
+    </ul>
+
+    <div (click)="logout()" class="nav-item logout">
+      {{ 'game.logout' | translate }}
+    </div>
+  </div>
+
+</nav>

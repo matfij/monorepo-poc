@@ -1,13 +1,7 @@
-import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Message } from '@monorepo-poc/api-interfaces';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'monorepo-poc-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  selector: 'app-root',
+  template: '<router-outlet></router-outlet>',
 })
-export class AppComponent {
-  hello$ = this.http.get<Message>('/api/hello');
-  constructor(private http: HttpClient) {}
-}
+export class AppComponent {}

@@ -72,7 +72,7 @@
       "projectType": "application",
       "root": "apps/nightwood",
       "sourceRoot": "apps/nightwood/src",
-      "prefix": "monorepo-poc",
+      "prefix": "nightwood",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
