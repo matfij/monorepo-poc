@@ -8,3 +8,19 @@ services:
       - .env
     ports:
       - '${POSTGRES_PORT}:${POSTGRES_PORT}'
+
+  api:
+    build:
+      context: ./apps/api
+      dockerfile: Dockerfile
+      target: development
+    env_file:
+      - .env
+    # volumes:
+    #   - ./backend:${BACKEND_SRC}
+    #   - ${BACKEND_SRC}/node_modules/
+    ports:
+      - '${BACKEND_PORT}:${BACKEND_PORT}'
+    depends_on:
+      - database
+    command: npm run start:dev
